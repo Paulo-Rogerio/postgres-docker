@@ -1,6 +1,6 @@
 # Docker PostgreSQL - Criando Ambientes Dinamicamente.
 
-Em ambiente de desenvolvimento é necessários termos vários ambientes, simular a sua aplicação implica diretamente em ter múltiplos bancos, cada qual com seu respectivo papel.
+Em ambiente de desenvolvimento é necessários termos vários ambientes, simular sua aplicação em múltiplos ambientes implica diretamente em ter múltiplos bancos, cada qual com seu respectivo papel.
 - Banco de Teste
 - Banco de Homologacao
 - Banco de Staging
@@ -8,9 +8,10 @@ Em ambiente de desenvolvimento é necessários termos vários ambientes, simular
 
 A finalidade desse projeto é ajudar seu time a manter atualizada várias réplicas do seu banco PostgreSQL, além de auxiliar no processo de upgrade do Banco. 
 
-## O que esse Script faz
+## O Que Faz Esse Script
 
-Permitir compilar a versão do PostgreSQL desejada, bem como compilar as contribs utilizadas pela sua empresa, personalizar porta que o serviço ficará listen, importar os dados e em ambiente de ***TEST*** criar o banco apenas o banco + estrutura de dados.
+Permitir compilar a versão do PostgreSQL desejada, bem como compilar as contribs utilizadas pela sua empresa, personalizar porta que o serviço ficará listen, importar os dados e em ambiente de ***TEST*** criar o banco de teste contendo apenas a estrutura de dados. 
+
 
 ## Ferramentas Necessárias
 
@@ -93,7 +94,7 @@ PRIORIZAR_SCHEMAS="xxx|yyy|zzz"
 
 ### Cache do Dump Realizado
 
-Para evitar vários dumps repetidos na criação dos ambientes, foi adotado um recurso de ***CACHE***. Caso haja necessidade de recriar a imagem mais de uma vez no dia devido mudancas ocorridos no ambiente de produção, após a imagem já ter sido gerada em um momento anterior, isso pode ser contornado removendo o arquivo de controle do cache.
+Para evitar vários dumps repetidos na criação dos ambientes, foi adotado um recurso de ***CACHE***. Caso haja necessidade de recriar a imagem mais de uma vez no dia devido mudancas ocorridos no ambiente de produção, deve-se eliminar arquivo de cache.
 
 ***Ex:*** Suponhamos que criou sua imagem as 04:00 , ao chegar para trabalhar sua equipe subiu mudancas as no banco de produção as 09:00. Se vc rodar o script, sem apagar o aquivo de controle de cache, essa novas mudancas não serão adicionadas na nova imagem desejada.
 
